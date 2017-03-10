@@ -1,0 +1,23 @@
+{
+  "name": "classic-arcade-game-clone-dev-tools",
+  "version": "1.0.0",
+  "description": "Dev tools for Project 3 of the Udacity FEND nanodegree.",
+  "main": "index.html",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TodMcChesney/classic-arcade-game-clone.git"
+  },
+  "author": "Tod McChesney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TodMcChesney/classic-arcade-game-clone/issues"
+  },
+  "homepage": "https://github.com/TodMcChesney/classic-arcade-game-clone#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "gulp": "^3.9.1"
+  }
+}
