@@ -11,6 +11,11 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     // Multiply movement by the dt parameter
     this.x = this.x + speed * dt;
+
+    // Reset enemy x position to starting point
+    if (this.x > 505) {
+        this.x = -100;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -18,9 +23,25 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Random number generator
+function getRandomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Now instantiate your enemy objects.
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
+
+// Pick random row of stones for enemy to cross on
+var row = (getRandomNumber(1, 3) * 83) - 24;
+
+// Pick random speed for enemy to move at
+var speed = getRandomNumber(50, 200);
+
+// Create enemy instance
+var enemy = allEnemies.push(new Enemy(-100, row, speed));
 
 // Now write your own player class
 // This class requires an update(), render() and
