@@ -10,7 +10,7 @@ var Enemy = function(x, y, speed) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // Multiply movement by the dt parameter
-    this.x = this.x + speed * dt;
+    this.x = this.x + this.speed * dt;
 
     // Reset enemy x position to starting point
     if (this.x > 505) {
