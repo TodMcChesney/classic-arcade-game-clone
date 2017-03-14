@@ -34,7 +34,7 @@ function getRandomNumber(min, max) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-for (var i = 0; i < 3; i++) {
+function createEnemy() {
     // Pick random row of stones for enemy to cross on
     var row = (getRandomNumber(1, 3) * 83) - 24;
 
@@ -44,6 +44,11 @@ for (var i = 0; i < 3; i++) {
     // Create enemy instance
     var enemy = allEnemies.push(new Enemy(-100, row, speed));
 }
+
+createEnemy();
+
+// Keep calling createEnemy function every 2 seconds
+setInterval(createEnemy, 2000);
 
 // Now write your own player class
 // This class requires an update(), render() and
