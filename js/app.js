@@ -11,11 +11,6 @@ var Enemy = function(x, y, speed) {
 Enemy.prototype.update = function(dt) {
     // Multiply movement by the dt parameter
     this.x = this.x + this.speed * dt;
-
-    // Reset enemy x position to starting point
-    if (this.x > 505) {
-        this.x = -100;
-    }
 };
 
 // Draw the enemy on the screen, required method for game
