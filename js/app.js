@@ -34,14 +34,16 @@ function getRandomNumber(min, max) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-// Pick random row of stones for enemy to cross on
-var row = (getRandomNumber(1, 3) * 83) - 24;
+for (var i = 0; i < 3; i++) {
+    // Pick random row of stones for enemy to cross on
+    var row = (getRandomNumber(1, 3) * 83) - 24;
 
-// Pick random speed for enemy to move at
-var speed = getRandomNumber(50, 200);
+    // Pick random speed for enemy to move at
+    var speed = getRandomNumber(50, 300);
 
-// Create enemy instance
-var enemy = allEnemies.push(new Enemy(-100, row, speed));
+    // Create enemy instance
+    var enemy = allEnemies.push(new Enemy(-100, row, speed));
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
