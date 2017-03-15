@@ -32,7 +32,7 @@ var allEnemies = [];
 // IIFE that creates an enemy instance every 2 seconds
 (function createEnemy() {
     // Pick random row of stones for enemy to cross on
-    var row = (getRandomNumber(1, 3) * 83) - 24;
+    var row = (getRandomNumber(1, 4) * 83) - 24;
 
     // Pick random speed for enemy to move at
     var speed = getRandomNumber(50, 300);
@@ -53,8 +53,8 @@ var Player = function(x, y) {
 
 // Resets game after winning
 Player.prototype.reset = function () {
-    this.x = 202;
-    this.y = 404;
+    this.x = 303;
+    this.y = 487;
     for (var i = 0; i < allEnemies.length; i++) {
         allEnemies.pop();
     }
@@ -64,10 +64,10 @@ Player.prototype.reset = function () {
 Player.prototype.update = function() {
     if (this.x < 0) {
         this.x = 0;
-    } else if (this.x > 404) {
-        this.x = 404;
-    } else if (this.y > 404) {
-        this.y = 404;
+    } else if (this.x > 606) {
+        this.x = 606;
+    } else if (this.y > 487) {
+        this.y = 487;
     } else if (this.y === -11) {
         player.reset();
     }
@@ -93,7 +93,7 @@ Player.prototype.handleInput = function(direction) {
 
 // Now instantiate your player objects.
 // Place the player object in a variable called player
-var player = new Player(202, 404);
+var player = new Player(303, 487);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
