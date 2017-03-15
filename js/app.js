@@ -29,7 +29,8 @@ function getRandomNumber(min, max) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-function createEnemy() {
+// IIFE that creates an enemy instance every 2 seconds
+(function createEnemy() {
     // Pick random row of stones for enemy to cross on
     var row = (getRandomNumber(1, 3) * 83) - 24;
 
@@ -38,12 +39,10 @@ function createEnemy() {
 
     // Create enemy instance
     var enemy = allEnemies.push(new Enemy(-100, row, speed));
-}
 
-createEnemy();
-
-// Keep calling createEnemy function every 2 seconds
-setInterval(createEnemy, 2000);
+    // Keep calling createEnemy function every 2 seconds
+    setTimeout(createEnemy, 2000);
+})();
 
 // Player class
 var Player = function(x, y) {
