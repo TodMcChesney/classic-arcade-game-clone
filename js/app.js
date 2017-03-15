@@ -46,8 +46,6 @@ createEnemy();
 setInterval(createEnemy, 2000);
 
 // Player class
-// This class requires an update(), render() and
-// a handleInput() method.
 var Player = function(x, y) {
     this.x = x;
     this.y = y;
@@ -74,7 +72,7 @@ Player.prototype.handleInput = function() {
 
 // Now instantiate your player objects.
 // Place the player object in a variable called player
-
+var player = new Player(202, 400);
 
 
 // This listens for key presses and sends the keys to your
