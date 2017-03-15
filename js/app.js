@@ -35,13 +35,13 @@ var allEnemies = [];
     var row = (getRandomNumber(1, 4) * 83) - 24;
 
     // Pick random speed for enemy to move at
-    var speed = getRandomNumber(50, 350);
+    var speed = getRandomNumber(100, 400);
 
     // Set bug image based on speed
     var sprite;
-    if (speed <= 150) {
+    if (speed <= 200) {
         sprite = 'images/enemy-bug.png';
-    } else if (speed >= 151 && speed <= 250) {
+    } else if (speed >= 201 && speed <= 300) {
         sprite = 'images/green-enemy-bug.png';
     } else {
         sprite = 'images/purple-enemy-bug.png';
@@ -79,7 +79,7 @@ Player.prototype.update = function() {
     } else if (this.y > 487) {
         this.y = 487;
     } else if (this.y === -11) {
-        player.reset();
+        this.reset();
     }
 };
 
