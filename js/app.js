@@ -1,9 +1,9 @@
 // Enemy class
-var Enemy = function(x, y, speed) {
+var Enemy = function(x, y, speed, sprite) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = sprite;
 };
 
 // Update the enemy's position, required method for game
@@ -35,10 +35,20 @@ var allEnemies = [];
     var row = (getRandomNumber(1, 4) * 83) - 24;
 
     // Pick random speed for enemy to move at
-    var speed = getRandomNumber(50, 300);
+    var speed = getRandomNumber(50, 350);
+
+    // Set bug image based on speed
+    var sprite;
+    if (speed <= 150) {
+        sprite = 'images/enemy-bug.png';
+    } else if (speed >= 151 && speed <= 250) {
+        sprite = 'images/green-enemy-bug.png';
+    } else {
+        sprite = 'images/purple-enemy-bug.png';
+    }
 
     // Create enemy instance
-    var enemy = allEnemies.push(new Enemy(-100, row, speed));
+    var enemy = allEnemies.push(new Enemy(-100, row, speed, sprite));
 
     // Keep calling createEnemy function every 2 seconds
     setTimeout(createEnemy, 2000);
