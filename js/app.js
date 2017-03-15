@@ -10,7 +10,7 @@ var Enemy = function(x, y, speed) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // Multiply movement by the dt parameter
-    this.x = this.x + this.speed * dt;
+    this.x += this.speed * dt;
 };
 
 // Draw the enemy on the screen, required method for game
@@ -65,13 +65,21 @@ Player.prototype.render = function() {
 };
 
 // Player.handleInput() method.
-Player.prototype.handleInput = function() {
-
+Player.prototype.handleInput = function(direction) {
+    if (direction === 'up') {
+        this.y -= 83;
+    } else if (direction === 'down') {
+        this.y += 83;
+    } else if (direction === 'left') {
+        this.x -= 101;
+    } else if (direction === 'right') {
+        this.x += 101;
+    }
 };
 
 // Now instantiate your player objects.
 // Place the player object in a variable called player
-var player = new Player(202, 400);
+var player = new Player(202, 404);
 
 
 // This listens for key presses and sends the keys to your
