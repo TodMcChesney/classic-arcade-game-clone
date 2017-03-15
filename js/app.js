@@ -45,14 +45,12 @@ createEnemy();
 // Keep calling createEnemy function every 2 seconds
 setInterval(createEnemy, 2000);
 
-// Now write your own player class
+// Player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
-    // Variables applied to each of our instances go here,
-
-    // The image/sprite for our player, this uses
-    // a helper we've provided to easily load images
+var Player = function(x, y) {
+    this.x = x;
+    this.y = y;
     this.sprite = 'images/char-boy.png';
 };
 
