@@ -61,7 +61,7 @@ var Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
 };
 
-// Resets game after winning
+// Resets game
 Player.prototype.reset = function () {
     this.x = 303;
     this.y = 487;
@@ -70,7 +70,19 @@ Player.prototype.reset = function () {
     }
 };
 
-// Updates player's position when border or water is reached.
+// Check for collision
+Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
+    for (var i = 0; i < target.length; i++) {
+        if (target[i].x < (player.x + 17) + 68 &&
+            target[i].x + wid > (player.x + 17) &&
+           (target[i].y + yAlpha) < (player.y + 63) + 77 &&
+           (target[i].y + yAlpha) + hgt > (player.y + 63)) {
+            return true;
+        }
+    }
+};
+
+// Check for events and update game status
 Player.prototype.update = function() {
     if (this.x < 0) {
         this.x = 0;
@@ -79,6 +91,11 @@ Player.prototype.update = function() {
     } else if (this.y > 487) {
         this.y = 487;
     } else if (this.y === -11) {
+        this.reset();
+    }
+
+    // Check for enemy collision
+    if (this.checkCollision(allEnemies, 77, 98, 66) === true) {
         this.reset();
     }
 };
