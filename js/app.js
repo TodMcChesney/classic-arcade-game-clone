@@ -73,10 +73,12 @@ Player.prototype.reset = function () {
 // Check for collision accounting for transparent pixels
 Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
     for (var i = 0; i < target.length; i++) {
-        if (target[i].x < (player.x + 17) + 68 &&
-            target[i].x + wid > (player.x + 17) &&
-           (target[i].y + yAlpha) < (player.y + 63) + 77 &&
-           (target[i].y + yAlpha) + hgt > (player.y + 63)) {
+        if (player.x +  85 > target[i].x &&
+            player.x +  17 < target[i].x + wid &&
+            player.y + 140 > target[i].y + yAlpha &&
+            player.y +  63 < target[i].y + yAlpha + hgt) {
+
+            // Collision is true
             return true;
         }
     }
