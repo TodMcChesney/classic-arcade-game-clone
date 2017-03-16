@@ -70,7 +70,7 @@ Player.prototype.reset = function () {
     }
 };
 
-// Check for collision
+// Check for collision accounting for transparent pixels
 Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
     for (var i = 0; i < target.length; i++) {
         if (target[i].x < (player.x + 17) + 68 &&
@@ -84,13 +84,7 @@ Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
 
 // Check for events and update game status
 Player.prototype.update = function() {
-    if (this.x < 0) {
-        this.x = 0;
-    } else if (this.x > 606) {
-        this.x = 606;
-    } else if (this.y > 487) {
-        this.y = 487;
-    } else if (this.y === -11) {
+    if (this.y === -11) {
         this.reset();
     }
 
@@ -105,7 +99,7 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Handles input from arrow keys and moves player.
+// Handles input from arrow keys and moves player inside field of play
 Player.prototype.handleInput = function(direction) {
     if (direction === 'up') {
         this.y -= 83;
@@ -115,6 +109,15 @@ Player.prototype.handleInput = function(direction) {
         this.x -= 101;
     } else if (direction === 'right') {
         this.x += 101;
+    }
+
+    // Keep player within boundaries of playing field
+    if (this.x < 0) {
+        this.x = 0;
+    } else if (this.x > 606) {
+        this.x = 606;
+    } else if (this.y > 487) {
+        this.y = 487;
     }
 };
 
