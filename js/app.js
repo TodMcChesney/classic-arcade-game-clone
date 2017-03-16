@@ -32,7 +32,7 @@ var allEnemies = [];
 // IIFE that creates an enemy instance every 2 seconds
 (function createEnemy() {
     // Pick random row of stones for enemy to cross on
-    var row = (getRandomNumber(1, 4) * 83) - 24;
+    var row = (getRandomNumber(1, 5) * 83) - 24;
 
     // Pick random speed for enemy to move at
     var speed = getRandomNumber(100, 400);
