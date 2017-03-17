@@ -152,6 +152,13 @@ var Engine = (function(global) {
             enemy.render();
         });
 
+        /* Loop through all of the objects within the allGems array and call
+         * the render function you have defined.
+         */
+        allGems.forEach(function(gem) {
+            gem.render();
+        });
+
         player.render();
     }
 
@@ -174,6 +181,9 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/green-enemy-bug.png',
         'images/purple-enemy-bug.png',
+        'images/blue-gem.png',
+        'images/green-gem.png',
+        'images/orange-gem.png',
         'images/char-boy.png'
     ]);
     Resources.onReady(init);

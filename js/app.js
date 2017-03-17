@@ -34,6 +34,7 @@ var createEnemyDelay = 2000;
 
 // IIFE that creates an enemy instance based on delay value
 (function createEnemy() {
+
     // Pick random row of stones for enemy to cross on
     var row = (getRandomNumber(1, 5) * 83) - 24;
 
@@ -55,6 +56,46 @@ var createEnemyDelay = 2000;
 
     // Create multiple enemies with time delay between instances
     setTimeout(createEnemy, createEnemyDelay);
+})();
+
+// Gem class
+var Gem = function(x, y, sprite) {
+    this.x = x;
+    this.y = y;
+    this.sprite = sprite;
+};
+
+// Draw the gem on the screen, required method for game
+Gem.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Now instantiate your gem objects
+// Place all gem objects in an array called allGems
+var allGems = [];
+
+// IIFE that creates 3 gem instances per level
+(function createGems() {
+    for (var i = 0; i < 3; i++) {
+
+        // Pick random col for gem to be on
+        var col = getRandomNumber(1, 7) * 101;
+
+        // Pick random row of stones for gem to be on
+        var row = (getRandomNumber(1, 5) * 83) - 24;
+
+        // Assign gem image
+        if (i === 0) {
+            sprite = 'images/blue-gem.png';
+        } else if (i === 1) {
+            sprite = 'images/green-gem.png';
+        } else {
+            sprite = 'images/orange-gem.png';
+        }
+
+        // Create gem instance
+        var gem = allGems.push(new Gem(col, row, sprite));
+    }
 })();
 
 // Player class
