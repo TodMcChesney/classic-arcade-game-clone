@@ -74,8 +74,8 @@ Gem.prototype.render = function() {
 // Place all gem objects in an array called allGems
 var allGems = [];
 
-// IIFE that creates 3 gem instances per level
-(function createGems() {
+// Creates an array of 3 gem instances
+function createGems() {
     for (var i = 0; i < 3; i++) {
 
         // Pick random col for gem to be on
@@ -96,7 +96,9 @@ var allGems = [];
         // Create gem instance
         var gem = allGems.push(new Gem(col, row, sprite));
     }
-})();
+}
+
+createGems();
 
 // Player class
 var Player = function(x, y) {
@@ -111,9 +113,18 @@ var Player = function(x, y) {
 Player.prototype.reset = function () {
     this.x = 303;
     this.y = 487;
+
+    // Remove all enemy instances
     for (var i = 0; i < allEnemies.length; i++) {
         allEnemies.pop();
     }
+
+    // Remove all gem instances
+    for (var x = 0; x < allGems.length; x++) {
+        allGems.pop();
+    }
+
+    createGems();
 };
 
 // Check for collision accounting for transparent pixels
