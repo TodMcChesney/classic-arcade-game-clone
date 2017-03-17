@@ -165,10 +165,11 @@ Player.prototype.update = function() {
     // Check for enemy collision
     if (this.checkCollision(allEnemies, 77, 98, 66) === true) {
 
-        // If true then reset stats and start game over
+        // If true then reset stats and createEnemyDelay and start game over
         this.level = 1;
         this.score = 0;
         this.gems = 0;
+        createEnemyDelay = 2000;
         this.reset();
     }
 
