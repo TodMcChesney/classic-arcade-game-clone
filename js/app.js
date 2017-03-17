@@ -62,11 +62,9 @@ var Player = function(x, y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/char-boy.png';
+    this.level = 1;
+    this.score = 0;
 };
-
-// Player stats
-var level = 1;
-var score = 0;
 
 // Resets game play
 Player.prototype.reset = function () {
@@ -98,8 +96,8 @@ Player.prototype.update = function() {
     if (this.y === -11) {
 
         // Increment level and score
-        level += 1;
-        score += 100;
+        this.level += 1;
+        this.score += 100;
 
         // Increase difficulty by creating enemies faster (.2 sec min)
         if (createEnemyDelay > 200) {
@@ -113,7 +111,9 @@ Player.prototype.update = function() {
     // Check for enemy collision
     if (this.checkCollision(allEnemies, 77, 98, 66) === true) {
 
-        // If true then reset game play
+        // If true then reset stats and start game over
+        this.level = 1;
+        this.score = 0;
         this.reset();
     }
 };
@@ -128,10 +128,10 @@ Player.prototype.render = function() {
     ctx.fillStyle = '#fff';
 
     // Draw player's level
-    ctx.fillText('Level: ' + level, 70, 80);
+    ctx.fillText('Level: ' + this.level, 70, 80);
 
     // Draw player's score
-    ctx.fillText('Score: ' + score, 353, 80);
+    ctx.fillText('Score: ' + this.score, 353, 80);
 };
 
 // Handles input from arrow keys and moves player inside field of play
