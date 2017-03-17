@@ -29,7 +29,10 @@ function getRandomNumber(min, max) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-// IIFE that creates an enemy instance every 2 seconds
+// Start game creating an enemy every 2 seconds
+var createEnemyDelay = 2000;
+
+// IIFE that creates an enemy instance based on delay value
 (function createEnemy() {
     // Pick random row of stones for enemy to cross on
     var row = (getRandomNumber(1, 5) * 83) - 24;
@@ -50,8 +53,8 @@ var allEnemies = [];
     // Create enemy instance
     var enemy = allEnemies.push(new Enemy(-100, row, speed, sprite));
 
-    // Keep calling createEnemy function every 2 seconds
-    setTimeout(createEnemy, 2000);
+    // Create multiple enemies with time delay between instances
+    setTimeout(createEnemy, createEnemyDelay);
 })();
 
 // Player class
@@ -61,7 +64,11 @@ var Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
 };
 
-// Resets game
+// Player stats
+var level = 1;
+var score = 0;
+
+// Resets game play
 Player.prototype.reset = function () {
     this.x = 303;
     this.y = 487;
@@ -86,19 +93,45 @@ Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
 
 // Check for events and update game status
 Player.prototype.update = function() {
+
+    //Player completes level by getting to the water
     if (this.y === -11) {
+
+        // Increment level and score
+        level += 1;
+        score += 100;
+
+        // Increase difficulty by creating enemies faster (.2 sec min)
+        if (createEnemyDelay > 200) {
+            createEnemyDelay -= 100;
+        }
+
+        // Reset game play for next level
         this.reset();
     }
 
     // Check for enemy collision
     if (this.checkCollision(allEnemies, 77, 98, 66) === true) {
+
+        // If true then reset game play
         this.reset();
     }
 };
 
-// Draw the player on the screen, required method for game
+// Draw the player and their stats on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
+    // Set font style
+    ctx.font = '16pt Chango';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#fff';
+
+    // Draw player's level
+    ctx.fillText('Level: ' + level, 70, 80);
+
+    // Draw player's score
+    ctx.fillText('Score: ' + score, 353, 80);
 };
 
 // Handles input from arrow keys and moves player inside field of play
