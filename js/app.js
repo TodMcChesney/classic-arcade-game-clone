@@ -79,7 +79,7 @@ function createGems() {
     for (var i = 0; i < 3; i++) {
 
         // Pick random col for gem to be on
-        var col = getRandomNumber(1, 7) * 101;
+        var col = getRandomNumber(0, 6) * 101;
 
         // Pick random row of stones for gem to be on
         var row = (getRandomNumber(1, 5) * 83) - 24;
@@ -107,6 +107,7 @@ var Player = function(x, y) {
     this.sprite = 'images/char-boy.png';
     this.level = 1;
     this.score = 0;
+    this.gems = 0;
 };
 
 // Resets game play
@@ -130,12 +131,13 @@ Player.prototype.reset = function () {
 // Check for collision accounting for transparent pixels
 Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
     for (var i = 0; i < target.length; i++) {
-        if (player.x +  85 > target[i].x &&
-            player.x +  17 < target[i].x + wid &&
-            player.y + 140 > target[i].y + yAlpha &&
-            player.y +  63 < target[i].y + yAlpha + hgt) {
+        if (this.x +  85 > target[i].x &&
+            this.x +  17 < target[i].x + wid &&
+            this.y + 140 > target[i].y + yAlpha &&
+            this.y +  63 < target[i].y + yAlpha + hgt) {
 
-            // Collision is true
+            // Collision is true, move target out of field of play
+            target[i].y += 1000;
             return true;
         }
     }
@@ -166,7 +168,14 @@ Player.prototype.update = function() {
         // If true then reset stats and start game over
         this.level = 1;
         this.score = 0;
+        this.gems = 0;
         this.reset();
+    }
+
+    // Check for gem collision
+    if (this.checkCollision(allGems, 77, 58, 66) === true) {
+        this.score += 20;
+        this.gems += 1;
     }
 };
 
@@ -184,6 +193,9 @@ Player.prototype.render = function() {
 
     // Draw player's score
     ctx.fillText('Score: ' + this.score, 353, 80);
+
+    // Draw player's number of gems
+    ctx.fillText('Gems: ' + this.gems, 630, 80);
 };
 
 // Handles input from arrow keys and moves player inside field of play
