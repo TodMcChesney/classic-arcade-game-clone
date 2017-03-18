@@ -27,7 +27,9 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Random number generator
+// Random number generator from MDN documentation
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
+// Global_Objects/Math/random
 function getRandomNumber(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -147,6 +149,9 @@ Player.prototype.reset = function () {
 * @this Player
 * @returns {boolean} true if there is a collision
 */
+// Based on: 2D collision detection - MDN documentation
+// https://developer.mozilla.org/en-US/docs/Games/Techniques/
+// 2D_collision_detection
 Player.prototype.checkCollision = function(target, yAlpha, wid, hgt) {
     for (var i = 0; i < target.length; i++) {
         if (this.x +  85 > target[i].x &&
