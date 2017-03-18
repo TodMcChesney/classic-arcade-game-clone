@@ -116,12 +116,14 @@ Player.prototype.reset = function () {
     this.y = 487;
 
     // Remove all enemy instances
-    for (var i = 0; i < allEnemies.length; i++) {
+    var enemiesArrayLength = allEnemies.length;
+    for (var i = 0; i < enemiesArrayLength; i++) {
         allEnemies.pop();
     }
 
     // Remove all gem instances
-    for (var x = 0; x < allGems.length; x++) {
+    var gemsArrayLength = allGems.length;
+    for (var x = 0; x < gemsArrayLength; x++) {
         allGems.pop();
     }
 
