@@ -1,11 +1,10 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync');
 
-/** Running dev tasks from CLI
-* 'npm run gulp' (Runs browserSync and watches for changes)
-*/
+// Running dev tasks from CLI
+// $ npm run gulp (Runs browserSync and watches for changes)
 
-// browserSync
+// browserSync task
 gulp.task('browserSync', () =>
     browserSync.init({
         server: {
@@ -14,7 +13,7 @@ gulp.task('browserSync', () =>
     })
 );
 
-// gulp (Set default 'gulp' task to run browserSync and watch for changes)
+// Default gulp task runs browserSync and watches for changes
 gulp.task('default', ['browserSync'], () => {
     gulp.watch('js/*.js', browserSync.reload);
     gulp.watch('css/style.css', browserSync.reload);
