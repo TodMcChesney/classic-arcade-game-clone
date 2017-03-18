@@ -29,8 +29,8 @@ function getRandomNumber(min, max) {
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 
-// Start game creating an enemy every 2 seconds
-var createEnemyDelay = 2000;
+// Start game creating an enemy every 3 seconds
+var createEnemyDelay = 3000;
 
 // IIFE that creates an enemy instance based on delay value
 (function createEnemy() {
@@ -39,13 +39,13 @@ var createEnemyDelay = 2000;
     var row = (getRandomNumber(1, 5) * 83) - 24;
 
     // Pick random speed for enemy to move at
-    var speed = getRandomNumber(100, 400);
+    var speed = getRandomNumber(100, 550);
 
     // Set bug image based on speed
     var sprite;
-    if (speed <= 200) {
+    if (speed <= 250) {
         sprite = 'images/enemy-bug.png';
-    } else if (speed >= 201 && speed <= 300) {
+    } else if (speed >= 251 && speed <= 400) {
         sprite = 'images/green-enemy-bug.png';
     } else {
         sprite = 'images/purple-enemy-bug.png';
@@ -171,7 +171,7 @@ Player.prototype.update = function() {
         this.level = 1;
         this.score = 0;
         this.gems = 0;
-        createEnemyDelay = 2000;
+        createEnemyDelay = 3000;
         this.reset();
     }
 
