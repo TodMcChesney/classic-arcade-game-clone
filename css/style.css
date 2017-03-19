@@ -1,4 +1,10 @@
 body {
     background-color: #000;
+    color: #fff;
+    font-family: 'Chango';
     text-align: center;
+}
+
+.title {
+    margin-bottom: 0;
 }
