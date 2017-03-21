@@ -2,7 +2,12 @@
 
 Project #3 of the Udacity Front-End Nanodegree.
 
-## Running the application
+## Play the game live
+
+[https://todmcchesney.github.io/classic-arcade-game-clone/](https://
+todmcchesney.github.io/classic-arcade-game-clone/)
+
+## Running the application locally
 
 Clone this repository or download the ZIP file and extract the files in
 it. Open up the index.html file in your browser and the game will start.
@@ -10,8 +15,9 @@ it. Open up the index.html file in your browser and the game will start.
 ## Playing the game
 
 Use the arrow keys to move your player up, down, left, and right
-respectively. The object of the game is to make it across the stone path
-to the water without getting hit by enemy bugs.
+respectively. The object of the game is to collect all of the gems while
+making it across the stone path to the water without getting hit by
+enemy bugs.
 
 ### Collecting gems
 
