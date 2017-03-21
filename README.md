@@ -4,8 +4,7 @@ Project #3 of the Udacity Front-End Nanodegree.
 
 ## Play the game live
 
-[https://todmcchesney.github.io/classic-arcade-game-clone/](https://
-todmcchesney.github.io/classic-arcade-game-clone/)
+[https://todmcchesney.github.io/classic-arcade-game-clone/](https://todmcchesney.github.io/classic-arcade-game-clone/)
 
 ## Running the application locally
 
