@@ -239,12 +239,12 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// This hides/shows text when button is clicked
+// This shows/hides text when button is clicked
 function showText(id) {
     var elementId = document.getElementById(id);
-    if (elementId.style.display === 'none') {
-        elementId.style.display = 'block';
-    } else {
+    if (elementId.style.display === 'block') {
         elementId.style.display = 'none';
+    } else {
+        elementId.style.display = 'block';
     }
 }
