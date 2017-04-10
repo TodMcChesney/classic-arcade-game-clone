@@ -4,7 +4,7 @@
   "description": "Dev tools for Project 3 of the Udacity FEND nanodegree.",
   "main": "index.html",
   "scripts": {
-    "gulp": "gulp"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

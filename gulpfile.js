@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync');
 
 // Running dev tasks from CLI
-// $ npm run gulp (Runs browserSync and watches for changes)
+// $ gulp (Runs browserSync and watches for changes)
 
 // browserSync task
 gulp.task('browserSync', () =>
