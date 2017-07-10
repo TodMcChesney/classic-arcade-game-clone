@@ -239,12 +239,12 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// This shows/hides text when button is clicked
-function showText(id) {
-    var elementId = document.getElementById(id);
-    if (elementId.style.display === 'block') {
-        elementId.style.display = 'none';
+// This shows/hides game rules when the button is clicked
+function toggleRules() {
+    var rulesDiv = document.getElementById('rules');
+    if (rulesDiv.style.display === 'block') {
+        rulesDiv.style.display = 'none';
     } else {
-        elementId.style.display = 'block';
+        rulesDiv.style.display = 'block';
     }
 }
